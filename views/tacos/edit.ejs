@@ -3,7 +3,7 @@
 
 <section>
   <h1>Edit the Taco! 🌮</h1>
-  <form action="">
+  <form action="/tacos/<%= taco._id %>?_method=PUT" method="POST">
     <label>
       Name:
       <input 

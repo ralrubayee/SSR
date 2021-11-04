@@ -74,10 +74,32 @@ function edit(req, res) {
   })
 }
 
+function update(req, res) {
+  Taco.findById(req.params.id)
+  .then(taco => {
+    if (taco.owner.equals(req.user.profile._id)) {
+      // the person that created the taco is trying to edit the taco
+      req.body.tasty = !!req.body.tasty
+      taco.updateOne(req.body, {new: true})
+      .then(() => {
+        res.redirect(`/tacos/${taco._id}`)
+      })
+    } else {
+      // the person that created the taco is NOT the person trying to edit the taco
+      throw new Error ("🚫 Not Authorized! 🚫")
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/tacos")
+  })
+}
+
 export {
   index,
   create,
   show,
   flipTasty,
   edit,
+  update,
 }

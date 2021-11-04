@@ -14,8 +14,11 @@ router.get("/:id/edit", tacosCtrl.edit)
 // localhost:3000/tacos - POST
 router.post("/", isLoggedIn, tacosCtrl.create)
 
-// localhost:3000/tacos/:id/flip-tasty
+// localhost:3000/tacos/:id/flip-tasty - PATCH
 router.patch("/:id/flip-tasty", isLoggedIn, tacosCtrl.flipTasty)
+
+// localhost:3000/tacos/:id - PUT
+router.put("/:id", isLoggedIn, tacosCtrl.update)
 
 export {
   router
