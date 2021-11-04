@@ -9,6 +9,26 @@ function createIngredient(req, res) {
   })
 }
 
+function ingredientIndex(req, res) {
+  Ingredient.find({})
+  .then(ingredients => res.json(ingredients))
+  .catch(err => {
+    console.log(err)
+    res.json(err)
+  })
+}
+
+function deleteIngredient(req, res) {
+  Ingredient.findByIdAndDelete(req.params.id)
+  .then(ingredient => res.json(ingredient))
+  .catch(err => {
+    console.log(err)
+    res.json(err)
+  })
+}
+
 export {
-  createIngredient
+  createIngredient,
+  ingredientIndex,
+  deleteIngredient,
 }
