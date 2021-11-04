@@ -95,6 +95,26 @@ function update(req, res) {
   })
 }
 
+function deleteTaco(req, res) {
+  Taco.findById(req.params.id)
+  .then(taco => {
+    if (taco.owner.equals(req.user.profile._id)) {
+      // the person that created the taco is trying to delete the taco
+      taco.delete()
+      .then(() => {
+        res.redirect("/tacos")
+      })
+    } else {
+      // the person that created the taco is NOT the person trying to delete the taco
+      throw new Error ("🚫 Not Authorized! 🚫")
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/tacos")
+  })
+}
+
 export {
   index,
   create,
@@ -102,4 +122,5 @@ export {
   flipTasty,
   edit,
   update,
+  deleteTaco as delete
 }
