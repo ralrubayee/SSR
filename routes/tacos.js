@@ -6,6 +6,8 @@ const router = Router()
 
 // localhost:3000/tacos - GET
 router.get("/", tacosCtrl.index)
+// localhost:3000/tacos/:id - GET
+router.get("/:id", tacosCtrl.show)
 
 // localhost:3000/tacos - POST
 router.post("/", isLoggedIn, tacosCtrl.create)
