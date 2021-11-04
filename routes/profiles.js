@@ -6,6 +6,11 @@ const router = Router()
 
 // localhost:3000/profiles - GET
 router.get("/", isLoggedIn, profilesCtrl.index)
+// localhost:3000/profiles - GET
+router.get("/:id", isLoggedIn, profilesCtrl.show)
+
+// localhost:3000/profiles/:id/cats - POST (Cat)
+router.post("/:id/cats", isLoggedIn, profilesCtrl.createCat)
 
 export {
   router
