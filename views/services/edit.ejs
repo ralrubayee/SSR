@@ -1,0 +1,29 @@
+<%- include("../partials/html-head") %>
+<%- include("../partials/nav") %>
+
+<section>
+  <h1>Edit the service</h1>
+  <form action="/services/<%= service._id %>?_method=PUT" method="POST">
+    <label>
+      Name:
+      <input 
+        type="text" 
+        name="name" 
+        value="<%= service.name %>"
+        autocomplete="off"
+      >
+    </label>
+    <label>
+      Tasty?
+      <input 
+        type="checkbox" 
+        name="tasty"
+        <%= service.tasty ? "checked" : "" %> 
+      >
+    </label>
+    <button type="submit">Edit the service</button>
+  </form>
+</section>
+
+
+<%- include("../partials/footer") %> 

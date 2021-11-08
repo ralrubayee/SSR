@@ -1,0 +1,29 @@
+<%- include("../partials/html-head") %>
+<%- include("../partials/nav") %>
+
+<section>
+  <p>From the kitchen of <%= service.owner.name %></p>
+  <h1><%= service.name %> </h1>
+  <h2>This service is <%= service.tasty ? "tasty! 😋" : "not tasty! 😢" %> </h2>
+  <% if (user) {%>
+    <form 
+      action="/services/<%= service._id %>/flip-tasty?_method=PATCH"
+      method="POST"  
+    >
+      <button class="btn" type="submit">
+        Make taco <%= service.tasty ? "not tasty 🌮😞" : "tasty 🌮🎉" %> 
+      </button>
+    </form>
+  <% } %>
+  <% if (service.owner.equals(user?.profile._id)) { %>
+    <form action="/tacos/<%= taco._id %>/edit" method="GET">
+      <button class="btn" type="submit">Edit this taco 🌮🚧</button>
+    </form>
+    <form action="/services/<%= service._id %>?_method=DELETE" method="POST">
+      <button class="btn" type="submit">Delete this taco 🌮💀</button>
+    </form>
+  <% } %>
+</section>
+
+
+<%- include("../partials/footer") %> 

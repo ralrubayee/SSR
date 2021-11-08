@@ -1,0 +1,32 @@
+<%- include("../partials/html-head") %>
+<%- include("../partials/nav") %>
+
+<section>
+  <h1>services</h1>
+  <% if (user) { %>
+    <h2>Add a service!</h2>
+    <form action="/services" method="POST">
+      <label>
+        Name:
+        <input type="text" name="name" autocomplete="off">
+      </label>
+      <label>
+        Tasty?
+        <input type="checkbox" name="tasty">
+      </label>
+      <button type="submit">Add service</button>
+    </form>
+  <% } %>
+  <h2>All the services!</h2>
+  <ul>
+    <% services.forEach(service => { %>
+      <li>
+        
+        <a href="/services/<%= service._id %>"><%= service.name %></a>
+        is <%= service.tasty ? "tasty" : "not tasty" %>
+      </li>
+    <% }) %> 
+  </ul>
+</section>
+
+<%- include("../partials/footer") %> 
