@@ -11,8 +11,8 @@ router.get("/", servicesCtrl.index)
 router.get("/:id", servicesCtrl.show)
 // localhost:3000/services/:id/edit
 router.get("/:id/edit", servicesCtrl.edit)
-// localhost:3000/services/:id/review
-router.get("/:id/reviews", servicesCtrl.edit)
+// localhost:3000/services/:id/reviews
+router.post("/:id/reviews", servicesCtrl.createReview)
 
 // localhost:3000/services - POST
 router.post("/", isLoggedIn, servicesCtrl.create)

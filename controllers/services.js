@@ -1,8 +1,8 @@
-import { service } from "../models/service.js"
+import { Service } from "../models/service.js"
 
 function index(req, res) {
   // Find all services
-  service.find({})
+  Service.find({})
   // When we have all the services
   .then(services => {
     // Do something with the services
@@ -19,7 +19,7 @@ function index(req, res) {
 
 function create(req, res) {
   req.body.owner = req.user.profile._id
-  service.create(req.body)
+  Service.create(req.body)
   .then(service => {
     res.redirect("/services")
   })
@@ -30,7 +30,7 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  service.findById(req.params.id)
+  Service.findById(req.params.id)
   .populate("owner")
   .then(service => {
     res.render("services/show", {
@@ -47,7 +47,7 @@ function show(req, res) {
 
 
 function edit(req, res) {
-  service.findById(req.params.id)
+  Service.findById(req.params.id)
   .then(service => {
     res.render("services/edit", {
       title: "Edit 🌮",
@@ -61,7 +61,7 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  service.findById(req.params.id)
+  Service.findById(req.params.id)
   .then(service => {
     if (service.owner.equals(req.user.profile._id)) {
       // the person that created the service is trying to edit the service
@@ -81,7 +81,7 @@ function update(req, res) {
 }
 
 function deleteservice(req, res) {
-  service.findById(req.params.id)
+  Service.findById(req.params.id)
   .then(service => {
     if (service.owner.equals(req.user.profile._id)) {
       // the person that created the service is trying to delete the service
@@ -100,6 +100,17 @@ function deleteservice(req, res) {
   })
 }
 
+function createReview(req, res) {
+
+  Service.findById(req.params.id, function(error, service) {
+    service.reviews.push(req.body)
+    console.log(service)
+    service.save(function(err) {
+      res.redirect(`/services/${service._id}`)
+    })
+  })
+
+}
 
 export {
   index,
@@ -108,5 +119,5 @@ export {
   edit,
   update,
   deleteservice as delete,
-  //createReview,
+  createReview,
 }

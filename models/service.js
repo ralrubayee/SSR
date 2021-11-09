@@ -23,8 +23,8 @@ const serviceSchema = new Schema({
 })
 
 
-const service = mongoose.model("service", serviceSchema)
+const Service = mongoose.model("service", serviceSchema)
 
 export {
-  service
+  Service
 }
