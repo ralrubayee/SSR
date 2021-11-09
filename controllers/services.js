@@ -26,9 +26,6 @@ function create(req, res) {
   .catch(err => {
     console.log(err)
     res.redirect("/services")
-  })
-}
-
 function show(req, res) {
   Service.findById(req.params.id)
   .populate("owner")
