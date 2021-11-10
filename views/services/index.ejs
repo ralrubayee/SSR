@@ -1,29 +1,83 @@
 <%- include("../partials/html-head") %>
+<link rel="stylesheet" href="/stylesheets/services/index.css">
 <%- include("../partials/nav") %>
 
 <section>
-  <h1>services!</h1>
+   <h1>services!</h1>
   <% if (user) { %>
-    <h2>Add a service!</h2>
-    <form action="/services" method="POST">
+     <h2>Add a service!</h2>
+    <form id="adding-sevices" action="/services" method="POST">
       <label>
         Name:
         <input type="text" name="name" autocomplete="off">
       </label>
 
       <label>
+        Description:
+        <input type="text" name="Description" autocomplete="off">
+      </label>
+
+      <label>
+        subscription:
+        <input type="text" name="sub" autocomplete="off">
+      </label>
+
+      <label>
         link:
         <input type="text" name="link" autocomplete="off">
       </label>
+
+      <label>
+        movie1:
+        <input type="text" name="movie1" autocomplete="off">
+      </label>
+      <label>
+        movie2:
+        <input type="text" name="movie2" autocomplete="off">
+      </label>
+      <label>
+        movie3:
+        <input type="text" name="movie3" autocomplete="off">
+      </label>
+      <label>
+        movie4:
+        <input type="text" name="movie4" autocomplete="off">
+      </label>
+      <label>
+        movie5:
+        <input type="text" name="movie5" autocomplete="off">
+      </label>
+      <label>
+        Tv1:
+        <input type="text" name="Tv1" autocomplete="off">
+      </label>
+      <label>
+        Tv2:
+        <input type="text" name="Tv2" autocomplete="off">
+      </label>
+      <label>
+        Tv3
+        <input type="text" name="Tv3" autocomplete="off">
+      </label>
+      <label>
+        Tv4:
+        <input type="text" name="Tv4" autocomplete="off">
+      </label>
+      <label>
+        Tv5:
+        <input type="text" name="Tv5" autocomplete="off">
+      </label>
+
+
       <button type="submit">Add </button>
-    </form>
-  <% } %>
+    </form> 
+  <% } %> 
   <h2>All the services!</h2>
-  <ul>
+  <ul id="streaming-services">
     <% services.forEach(service => { %>
-      <li>
+      <li id="each-streaming">
         
-        <a href="/services/<%= service._id %>"><%= service.name %></a>
+        <a href="/services/<%= service._id %>"><img src="<%= service.link %>" alt"" width="150px height="150px"></a>
        
       </li>
     <% }) %> 

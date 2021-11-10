@@ -17,6 +17,7 @@ function index(req, res) {
   })
 }
 
+
 function create(req, res) {
   req.body.owner = req.user.profile._id
   Service.create(req.body)
@@ -26,6 +27,9 @@ function create(req, res) {
   .catch(err => {
     console.log(err)
     res.redirect("/services")
+  })
+}
+
 function show(req, res) {
   Service.findById(req.params.id)
   .populate("owner")
@@ -40,6 +44,11 @@ function show(req, res) {
     res.redirect("/services")
   })
 }
+
+
+
+
+
 
 
 
@@ -96,9 +105,9 @@ function deleteservice(req, res) {
     res.redirect("/services")
   })
 }
+  
 
 function createReview(req, res) {
-
   Service.findById(req.params.id, function(error, service) {
     service.reviews.push(req.body)
     console.log(service)
@@ -106,8 +115,8 @@ function createReview(req, res) {
       res.redirect(`/services/${service._id}`)
     })
   })
-
 }
+
 
 export {
   index,
@@ -118,3 +127,4 @@ export {
   deleteservice as delete,
   createReview,
 }
+ 

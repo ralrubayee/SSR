@@ -1,0 +1,13 @@
+#streaming-services{
+  display: flex;
+  flex-direction: row;
+}
+
+#each-streaming{
+  margin: 10px;
+}
+
+#adding-sevices{
+  display: flex;
+  flex-direction: column;
+}
