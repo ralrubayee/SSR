@@ -1,16 +1,20 @@
-<%- include('./partials/html-head') %>
-<%- include('./partials/nav') %>
 
+<link rel="stylesheet" href="/stylesheets/index.css">
 <main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
-  <% if (user?.profile.avatar) { %>
-    <div>
-      <img 
-        src="<%= user.profile.avatar %>" 
-        alt="<%= user.profile.name %> avatar"
-      >
-    </div>
-  <% } %>
+
+  <img src="https://www.positivelyosceola.com/wp-content/uploads/2020/03/streaming-948x640.jpg" alt="">
+
+  
+  <div id="log-in">
+      <a href="/auth/google" class="siwg-link">
+        <button type="submit" class="siwg">
+          <img id="siwg-image" alt="Sign in with Google" />
+        </button>
+      </a>
+  
+    <a href="/services/index">continue as guest</a>
+    </div>  
+
 </main>
 
-<%- include('./partials/footer') %>
+

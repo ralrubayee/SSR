@@ -7,12 +7,15 @@ const router = Router()
 
 // localhost:3000/services - GET
 router.get("/", servicesCtrl.index)
+router.get("/new", servicesCtrl.newService)
 // localhost:3000/services/:id - GET
 router.get("/:id", servicesCtrl.show)
 // localhost:3000/services/:id/edit
 router.get("/:id/edit", servicesCtrl.edit)
 // localhost:3000/services/:id/reviews
 router.post("/:id/reviews", servicesCtrl.createReview)
+
+router.get("/new", servicesCtrl.newService)
 
 // localhost:3000/services - POST
 router.post("/", isLoggedIn, servicesCtrl.create)

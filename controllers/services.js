@@ -45,13 +45,6 @@ function show(req, res) {
   })
 }
 
-
-
-
-
-
-
-
 function edit(req, res) {
   Service.findById(req.params.id)
   .then(service => {
@@ -117,6 +110,13 @@ function createReview(req, res) {
   })
 }
 
+function newService(req, res){
+
+    res.render("services/new",{
+      title: "new service"
+    }) 
+
+ }
 
 export {
   index,
@@ -126,5 +126,5 @@ export {
   update,
   deleteservice as delete,
   createReview,
+  newService,
 }
- 

@@ -13,6 +13,33 @@
         autocomplete="off"
       >
     </label>
+    <label>
+      Description:
+      <input 
+      type="text" 
+      name="Description" 
+      value="<%= service.Description %>"
+      autocomplete="off">
+    </label>
+ 
+    <label>
+      subscription:
+      <input 
+      type="text" 
+      name="sub" 
+      value="<%= service.sub %>"
+      autocomplete="off">
+    </label>
+ 
+    <label>
+      link:
+      <input 
+      type="text" 
+      name="link" 
+      value="<%= service.link %>"
+      autocomplete="off">
+    </label>
+
     <button type="submit">Edit the service</button>
   </form>
 </section>

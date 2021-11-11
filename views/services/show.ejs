@@ -3,8 +3,9 @@
 <%- include("../partials/nav") %>
 
 <section>
+  <img id="background" src="<%= service.link %>" alt"">
+  <form id="details">
   <h1><%= service.name %></h1>
-  <img src="<%= service.link %>" alt"" width="200px height="200px">
   <p><%= service.Description %></p>
   <h3> subscription:</h3>
   <p><%= service.sub %></p>
@@ -20,7 +21,8 @@
   <img class="movies-tvs" src="<%= service.Tv3 %>" alt"" width="100px" height="135px">
   <img class="movies-tvs" src="<%= service.Tv4 %>" alt"" width="100px" height="135px">
   <img class="movies-tvs" src="<%= service.Tv5 %>" alt"" width="100px" height="135px">
-  <!-- <% if (service.owner.equals(user?.profile._id)) { %>
+</form>
+  <% if (service.owner.equals(user?.profile._id)) { %>
     <form action="/services/<%= service._id %>/edit" method="GET">
       <button class="btn" type="submit">Edit this service </button>
     </form>
@@ -28,27 +30,9 @@
       <button class="btn" type="submit">Delete this service </button>
     </form>
   <% } %>
-</section> -->
-<% if (user) {%>
-<h2>Reviews</h2>
-<form 
-  id="add-review-form"
-  action="/services/<%= service._id %>/reviews"
-  method="POST"
-> 
-  <label for="content-textarea">Review:</label>
-  <textarea name="content" id="content-textarea"></textarea>
-  <label for="rating-select">Rating:</label>
-  <select name="rating" id="rating-select">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5" selected>5</option>
-  </select>
-  <button type="submit">Add Review</button>
-</form>
-<% } %>
+</section>
+
+<form id="reviews-form">
 <% if (service.reviews.length) { %>
   <table>
     <thead>
@@ -71,5 +55,25 @@
 <% } else { %>
   <h3>No Reviews Yet</h3>
 <% } %>
-
+<% if (user) {%>
+  <h2>Reviews</h2>
+  <form 
+    id="add-review-form"
+    action="/services/<%= service._id %>/reviews"
+    method="POST"
+  > 
+    <label for="content-textarea">Review:</label>
+    <textarea name="content" id="content-textarea"></textarea>
+    <label for="rating-select">Rating:</label>
+    <select name="rating" id="rating-select">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5" selected>5</option>
+    </select>
+    <button type="submit">Add Review</button>
+  </form>
+  <% } %>
+</form>
 <%- include("../partials/footer") %> 
