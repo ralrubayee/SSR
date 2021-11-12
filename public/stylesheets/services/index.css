@@ -1,13 +1,26 @@
-#streaming-services{
-  display: flex;
-  flex-direction: row;
-}
-
-#each-streaming{
-  margin: 10px;
-}
-
-#adding-sevices{
+section{
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
+}
+
+ul{
+display: flex;
+}
+li{
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 5px 10px 30px rgb(53, 53, 53, 0.1);
+}
+.Streaming:hover img{
+  transition: all 1s ease-in-out;
+  transform: scale(1.2);
+  margin: 0 30px;
+  opacity: 0.8;
+}
+#add-service{
+
+box-shadow: 5px 10px 30px rgb(53, 53, 53, 0.1);
+text-align: center;
+font-size: 25px;
 }

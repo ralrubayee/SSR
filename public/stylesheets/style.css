@@ -18,18 +18,21 @@ html {
 }
 
 body {
-  background-color: rgb(181, 181, 181);
+  background-color: ffffff;
   /* Use a system font, if none are available use an available sans-sarif font */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   margin: 0;
+  padding: 0;
 }
 
 nav {
-  background-color: white;
-  font-size: 1.6rem;
+  background-color: #ffffff;
+  font-size: 2rem;
   display: flex;
   justify-content: center;
+  border: 1px solid rgba(0,0,0,0.4);
+  justify-content: space-around
 }
 
 main {
@@ -68,22 +71,44 @@ section {
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(162, 161, 161);
 }
 
 pre {
   font-size: 1.4rem;
 }
-
+#logo{
+  width: 40px;
+  height: 40px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
 nav > a {
   margin: 1rem 3rem;
   text-decoration: none;
-  font-size: 2.4rem;
+  padding: 8px;
+  font-size: 2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  color: #585858;
 }
-
+nav .menu {
+  height: 40px;
+  line-height: 43px;
+  padding: 22px;
+  display: flex;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+#logout{
+  margin-left: 400px;
+}
+.menu:hover{
+  background-color: #242424;
+  color: #ffffff;
+  box-shadow: 5px 10px 30px rgb(53, 53, 53, 0.1);
+  transition: all ease 0.2s;
+}
 .btn {
   margin: 1.6rem 0;
 }

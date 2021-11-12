@@ -3,25 +3,126 @@
 <%- include("../partials/nav") %>
 
 <section>
-  <img id="background" src="<%= service.link %>" alt"">
-  <form id="details">
-  <h1><%= service.name %></h1>
+  <img id="background"  src=<%= service.link %>" alt"">
+
+  <div id="details-container">
+    <br>
   <p><%= service.Description %></p>
   <h3> subscription:</h3>
   <p><%= service.sub %></p>
-  <h3> Popular movies:</h3>
-  <img class="movies-tvs" src="<%= service.movie1 %>" alt"" width="100px" height="135px">
-  <img class="movies-tvs" src="<%= service.movie2 %>" alt"" width="100px" height="135px">
-  <img class="movies-tvs" src="<%= service.movie3 %>" alt"" width="100px" height="135px">
-  <img class="movies-tvs" src="<%= service.movie4 %>" alt"" width="100px" height="135px">
-  <img class="movies-tvs" src="<%= service.movie5 %>" alt"" width="100px" height="135px">
-  <h3> Popular Tv:</h3>
-  <img class="movies-tvs" src="<%= service.Tv1 %>" alt"" width="100px" height="135px">
-  <img class="movies-tvs" src="<%= service.Tv2 %>" alt"" width="100px" height="135px">
-  <img class="movies-tvs" src="<%= service.Tv3 %>" alt"" width="100px" height="135px">
-  <img class="movies-tvs" src="<%= service.Tv4 %>" alt"" width="100px" height="135px">
-  <img class="movies-tvs" src="<%= service.Tv5 %>" alt"" width="100px" height="135px">
-</form>
+ </div>
+
+ <h3 > Popular movies:</h3>
+
+ 
+ 
+  <% if (user) {%>
+ 
+    <div id="movie-wraper">
+    <% if (service.movies.length) { %>
+          <% service.movies.forEach(function(movie) { %>
+            <div id="movie">
+            <img class="movies-list" src="<%= movie.link %> " alt="" width="150px" height="230px">
+            <div class="movie-title"><%= movie.name %> - 
+               <%= movie.year %></div>
+              </div>
+            
+          <% }) %>
+        
+    <% } else { %>
+      <h3>No movies Yet</h3>
+    <% } %>
+  </div>
+  <h3>Add New Movie:</h3>
+    <form 
+      id="add-movie-form"
+      action="/services/<%= service._id %>/movies"
+      method="POST"
+    > 
+      <label for="content-textarea">Name of the Movie:</label>
+      <textarea name="name" id="content-textarea"></textarea>
+      <label for="content-textarea">Year:</label>
+      <textarea name="year" id="content-textarea"></textarea>
+      <label for="content-textarea">Photo Link</label>
+      <textarea name="link" id="content-textarea"></textarea>
+      <button id="btn" type="submit">Add Movie</button>
+    </form>
+    <% } %>
+  </div>
+  <h3> Popular shows:</h3>
+
+  <% if (user) {%>
+    
+    <div id="movie-wraper">
+    <% if (service.shows.length) { %>
+      <div id="movie">
+          <% service.shows.forEach(function(show) { %>
+            <img class="movies-list" src="<%= show.link %> " alt=""  width="150px" height="230px">
+            <div class="movie-title"><%= show.name  %> - <%= show.year  %> </div>
+          </div>
+          <% }) %>
+   
+    <% } else { %>
+      <h3>No shows Yet</h3>
+    <% } %>
+  </div>
+  <h3>Add New show:</h3>
+    <form 
+      id="add-show-form"
+      action="/services/<%= service._id %>/shows"
+      method="POST"
+    > 
+      <label for="content-textarea">Name of the show:</label>
+      <textarea name="name" id="content-textarea"></textarea>
+      <label for="content-textarea">Year:</label>
+      <textarea name="year" id="content-textarea"></textarea>
+      <label for="content-textarea">Photo Link</label>
+      <textarea name="link" id="content-textarea"></textarea>
+      <button id="btn" type="submit">Add show</button>
+    </form>
+    <% } %>
+  </div>
+  
+  <div id="reviews-form">
+    <h3>reviews</h3>
+    <% if (service.reviews.length) { %>
+ 
+      
+          <% service.reviews.forEach(function(review) { %>
+            <div id="review">
+              <div id="rating">Rating:<%= review.rating %></div>
+              <div><%= review.content %></div>
+              <div id="date" ><%= review.createdAt.toLocaleDateString() %></div>
+
+            </div>
+            <% }) %>
+
+        <% } else { %>
+          <h3>No Reviews Yet</h3>
+          <% } %>
+          <% if (user) {%>
+            <h3>Add Review</h3>
+            <form 
+            id="add-review-form"
+            action="/services/<%= service._id %>/reviews"
+            method="POST"
+            > 
+            <label for="content-textarea">Add Review:</label>
+            <textarea name="content" id="content-textarea"></textarea>
+            <label for="rating-select">Rating:</label>
+            <select name="rating" id="rating-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5" selected>5</option>
+            </select>
+            <button id="btn" type="submit">Add Review</button>
+          </form>
+          <% } %>
+        </div>
+
+
   <% if (service.owner.equals(user?.profile._id)) { %>
     <form action="/services/<%= service._id %>/edit" method="GET">
       <button class="btn" type="submit">Edit this service </button>
@@ -30,50 +131,7 @@
       <button class="btn" type="submit">Delete this service </button>
     </form>
   <% } %>
-</section>
 
-<form id="reviews-form">
-<% if (service.reviews.length) { %>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Review</th>
-        <th>Rating</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% service.reviews.forEach(function(review) { %>
-        <tr>
-          <td><%= review.createdAt.toLocaleDateString() %></td>
-          <td><%= review.content %></td>
-          <td><%= review.rating %></td>
-        </tr>
-      <% }) %>
-    </tbody>
-  </table>
-<% } else { %>
-  <h3>No Reviews Yet</h3>
-<% } %>
-<% if (user) {%>
-  <h2>Reviews</h2>
-  <form 
-    id="add-review-form"
-    action="/services/<%= service._id %>/reviews"
-    method="POST"
-  > 
-    <label for="content-textarea">Review:</label>
-    <textarea name="content" id="content-textarea"></textarea>
-    <label for="rating-select">Rating:</label>
-    <select name="rating" id="rating-select">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5" selected>5</option>
-    </select>
-    <button type="submit">Add Review</button>
-  </form>
-  <% } %>
-</form>
-<%- include("../partials/footer") %> 
+      </section>
+        <%- include("../partials/footer") %> 
+        

@@ -3,20 +3,18 @@
 <%- include("../partials/nav") %>
 
 <section>
-   <h1>services!</h1>
  
-  <h2>All the services!</h2>
+ 
+  <h2 id="all-services" >All Streaming Services</h2>
   <ul id="streaming-services">
     <% services.forEach(service => { %>
-      <li id="each-streaming">
+      <li>
         
-        <a href="/services/<%= service._id %>"><img src="<%= service.link %>" alt"" width="150px height="150px"></a>
+        <a class="Streaming" href="/services/<%= service._id %>"><img src="<%= service.link %>" alt"" width="250px" height="250px"></a>
        
       </li>
     <% }) %> 
-    <% if (user) { %>
-      <a href="services/new">Add a new sevice</a>
-    <% } %> 
+ 
   </ul>
 </section>
 

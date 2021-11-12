@@ -4,10 +4,15 @@
 </head>
 <body>
 <nav>
-  <a href="/services">Streaming Services</a>
-  <a href="/profiles">profile</a>
+  <img id="logo" src="https://api.freelogodesign.org/files/a940bd2e2fa943e784906e31b81c2fee/thumb/logo_200x200.png?v=0" alt="" width="60px" height="60px">
+  
+  <a class="menu"  href="/services">Streaming Services</a>
+  <a class="menu" href="/profiles">Users</a>
   <% if (user) { %>
-    <a href="/auth/logout">Logout</a>
+  <a class="menu" href="/services/new">Add new Streaming Servce</a>
+  <% }%>
+  <% if (user) { %>
+    <a class="menu" id="logout" href="/auth/logout">Logout</a>
   <% } else { %>
     <a href="/auth/google" class="siwg-link">
       <button type="submit" class="siwg">

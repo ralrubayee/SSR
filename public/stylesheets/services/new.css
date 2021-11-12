@@ -1,0 +1,10 @@
+*{
+  font-family: monospace;
+  letter-spacing: 1px;
+}
+section{
+  display: flex;
+  flex-direction: column;
+}
+
+

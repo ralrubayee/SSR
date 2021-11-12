@@ -7,7 +7,7 @@ function index(req, res) {
   .then(services => {
     // Do something with the services
     res.render("services/index", {
-      title: "🌮",
+      title: "",
       services,
     })
   })
@@ -36,7 +36,7 @@ function show(req, res) {
   .then(service => {
     res.render("services/show", {
       service,
-      title: "🌮 show"
+      title: "Streaming Service"
     })
   })
   .catch(err => {
@@ -49,7 +49,7 @@ function edit(req, res) {
   Service.findById(req.params.id)
   .then(service => {
     res.render("services/edit", {
-      title: "Edit 🌮",
+      title: "Edit ",
       service,
     })
   })
@@ -110,6 +110,26 @@ function createReview(req, res) {
   })
 }
 
+function createMovie(req, res) {
+  Service.findById(req.params.id, function(error, service) {
+    service.movies.push(req.body)
+    console.log(service)
+    service.save(function(err) {
+      res.redirect(`/services/${service._id}`)
+    })
+  })
+}
+
+function createShow(req, res) {
+  Service.findById(req.params.id, function(error, service) {
+    service.shows.push(req.body)
+    console.log(service)
+    service.save(function(err) {
+      res.redirect(`/services/${service._id}`)
+    })
+  })
+}
+
 function newService(req, res){
 
     res.render("services/new",{
@@ -127,4 +147,6 @@ export {
   deleteservice as delete,
   createReview,
   newService,
+  createMovie,
+  createShow,
 }

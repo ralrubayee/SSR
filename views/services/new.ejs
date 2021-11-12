@@ -1,71 +1,37 @@
 <%- include("../partials/html-head") %> 
+<link rel="stylesheet" href="/stylesheets/services/new.css">
  <%- include("../partials/nav") %>
 <section>
-  <h2>Add a service!</h2>
+  <h2>Add a New Streaming Service</h2>
+  <p>Please use Google Images to upload a photo of a streaming service. Right-click on the image and then click Copy Image Address.</p>
+  <div id="box">
  <form id="adding-sevices" action="/services" method="POST">
    <label>
      Name:
      <input type="text" name="name" autocomplete="off">
    </label>
-
+<br>
+<br>
    <label>
      Description:
      <input type="text" name="Description" autocomplete="off">
    </label>
-
+   <br>
+   <br>
    <label>
      subscription:
      <input type="text" name="sub" autocomplete="off">
    </label>
-
+   <br>
+   <br>
    <label>
      link:
      <input type="text" name="link" autocomplete="off">
    </label>
-
-   <label>
-     movie1:
-     <input type="text" name="movie1" autocomplete="off">
-   </label>
-   <label>
-     movie2:
-     <input type="text" name="movie2" autocomplete="off">
-   </label>
-   <label>
-     movie3:
-     <input type="text" name="movie3" autocomplete="off">
-   </label>
-   <label>
-     movie4:
-     <input type="text" name="movie4" autocomplete="off">
-   </label>
-   <label>
-     movie5:
-     <input type="text" name="movie5" autocomplete="off">
-   </label>
-   <label>
-     Tv1:
-     <input type="text" name="Tv1" autocomplete="off">
-   </label>
-   <label>
-     Tv2:
-     <input type="text" name="Tv2" autocomplete="off">
-   </label>
-   <label>
-     Tv3
-     <input type="text" name="Tv3" autocomplete="off">
-   </label>
-   <label>
-     Tv4:
-     <input type="text" name="Tv4" autocomplete="off">
-   </label>
-   <label>
-     Tv5:
-     <input type="text" name="Tv5" autocomplete="off">
-   </label>
-
-
+   <br>
+   <br>
    <button type="submit">Add </button>
  </form> 
+</div>
 </section>
 <%- include("../partials/footer") %> 

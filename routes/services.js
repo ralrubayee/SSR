@@ -12,8 +12,13 @@ router.get("/new", servicesCtrl.newService)
 router.get("/:id", servicesCtrl.show)
 // localhost:3000/services/:id/edit
 router.get("/:id/edit", servicesCtrl.edit)
+
+router.post("/:id/movies", servicesCtrl.createMovie)
 // localhost:3000/services/:id/reviews
 router.post("/:id/reviews", servicesCtrl.createReview)
+
+
+router.post("/:id/shows", servicesCtrl.createShow)
 
 router.get("/new", servicesCtrl.newService)
 
