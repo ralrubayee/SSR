@@ -3,7 +3,7 @@
 <%- include("../partials/nav") %>
 
 <section>
-  <img id="background"  src=<%= service.link %>" alt"">
+  <img id="background"  src="<%= service.link %>" alt"">
 
   <div id="details-container">
     <br>
@@ -14,7 +14,7 @@
 
  <h3 > Popular movies:</h3>
 
-  <% if (user) {%>
+  
  
     <div class="movie-wraper">
     <% if (service.movies.length) { %>
@@ -31,6 +31,7 @@
       <h3>No movies Yet</h3>
     <% } %>
   </div>
+  <% if (user) {%>
   <h3>Add New Movie:</h3>
     <form 
       id="add-movie-form"
@@ -50,7 +51,7 @@
 
   <h3> Popular shows:</h3>
 
-  <% if (user) {%>
+  
     
     <div class="movie-wraper">
     <% if (service.shows.length) { %>
@@ -66,6 +67,7 @@
       <h3>No shows Yet</h3>
     <% } %>
   </div>
+  <% if (user) {%>
   <h3>Add New show:</h3>
     <form 
       id="add-show-form"

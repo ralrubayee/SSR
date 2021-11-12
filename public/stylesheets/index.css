@@ -50,11 +50,13 @@ body{
  
 }
 #continue-as-guest{
+  font-size: 1.2rem;
   margin: 20px;
   color: rgb(136, 232, 249);
 }
 p{
   color: black;
+  font-size: 1.5rem;
 }
 
 
