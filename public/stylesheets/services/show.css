@@ -26,15 +26,14 @@ section{
   font-family: monospace;
 }
 .movies-list{
-  object-fit: cover;
   margin: 15px;
   border-radius: 10px;
 }
 #movie:hover {
-
-  justify-content: center;
   transform: scale(1.2);
-  transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 30px;
   position: relative;
 
@@ -60,7 +59,7 @@ section{
   padding: 4px;
  
 }
-#movie-wraper{
+.movie-wraper{
  display: flex;
  flex-direction: row;
 
@@ -70,7 +69,7 @@ section{
   margin: 0px;
 }
 #add-movie-form{
-width: 1300px;
+  width: 1300px;
 height: 100px;
 border-radius: 5px;
 opacity: .7;
@@ -79,7 +78,7 @@ justify-content: center;
 align-items: center;
 border-top-left-radius: 70px ;
 border-bottom-right-radius: 70px;
-background-color: rgba(0, 0, 0, 0.057);
+background-color: rgba(0, 0, 0, 0.2);
 color: rgb(7, 7, 7);
 font-weight: bold;
 border: 1px solid rgba(109, 109, 109, 0.201);
@@ -94,7 +93,7 @@ justify-content: center;
 align-items: center;
 border-top-left-radius: 70px ;
 border-bottom-right-radius: 70px;
-background-color: rgba(0, 0, 0, 0.057);
+background-color: rgba(0, 0, 0, 0.2);
 color: rgb(7, 7, 7);
 font-weight: bold;
 border: 1px solid rgba(109, 109, 109, 0.201);
@@ -129,7 +128,7 @@ justify-content: center;
 align-items: center;
 border-top-left-radius: 70px ;
 border-bottom-right-radius: 70px;
-background-color: rgba(0, 0, 0, 0.057);
+background-color: rgba(0, 0, 0, 0.2);
 color: rgb(7, 7, 7);
 font-weight: bold;
 border: 1px solid rgba(109, 109, 109, 0.201);
