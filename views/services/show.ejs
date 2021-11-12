@@ -54,8 +54,8 @@
     
     <div class="movie-wraper">
     <% if (service.shows.length) { %>
-      <div id="movie">
-          <% service.shows.forEach(function(show) { %>
+      <% service.shows.forEach(function(show) { %>
+        <div id="movie">
             <img class="movies-list" src="<%= show.link %> " alt=""  width="150px" height="230px">
             <div class="movie-title"><%= show.name  %> - 
               <%= show.year  %> </div>

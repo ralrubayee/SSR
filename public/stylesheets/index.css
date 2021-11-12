@@ -45,14 +45,17 @@ body{
   font-family: monospace;
   padding: 0px;
   margin: 0px;
-  background-color: rgb(33, 34, 82);
+  background-color: #ffffff;
   letter-spacing: 1.5px;
+ 
 }
 #continue-as-guest{
   margin: 20px;
   color: rgb(136, 232, 249);
 }
-
+p{
+  color: black;
+}
 
 
 
